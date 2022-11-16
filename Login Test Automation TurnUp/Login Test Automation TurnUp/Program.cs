@@ -12,7 +12,7 @@ driver.Manage().Window.Maximize();
 driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login?ReturnUrl=%2f");
 //driver.Manage().Window.FullScreen();
 //driver.Manage().Window.Maximize();
-
+Thread.Sleep(2000);
 //identify username element and send data
 IWebElement loginUsername = driver.FindElement(By.Id("UserName"));
 loginUsername.SendKeys("hari");
@@ -20,7 +20,6 @@ loginUsername.SendKeys("hari");
 //identify password element and send data
 IWebElement loginPassword = driver.FindElement(By.Id("Password"));
 loginPassword.SendKeys("123123");
-
 
 //.identify login button and click login to enter main page
 IWebElement loginButton = driver.FindElement(By.XPath("//*[@id=\'loginForm\']/form/div[3]/input[1]"));
@@ -58,5 +57,24 @@ typeCode.Click();
 
 IWebElement tableGrid = driver.FindElement(By.XPath("/html/body/div[4]/div/div/div[3]/table"));
 Console.WriteLine("just checking");
+Thread.Sleep(5000);
 
-Console.WriteLine(driver.FindElements(By.XPath("/html/body/div[4]/div/div/div[3]/table")));
+//finding numbers of rows and columns in a table
+IWebElement webTable = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody"));
+ReadOnlyCollection<IWebElement> rows = webTable.FindElements(By.TagName("tr"));
+webTable = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr"));
+ReadOnlyCollection<IWebElement> cols = webTable.FindElements(By.TagName("td"));
+for (int i = 1; i <= rows.Count(); i++)
+{
+    IWebElement disp = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[1]"));
+    Console.WriteLine(disp.Text);
+    for (int j = 1; j <= 4; j++)
+    {
+        //Thread.Sleep(2000);
+        string str = "//*[@id=\\\"tmsGrid\\\"]/div[3]/table/tbody/tr[" + i + "]/td[" + j + "]";
+        IWebElement columns = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[" + j + "]"));
+        Console.Write("     " + columns.Text + "     ");
+    }
+    
+}
+
