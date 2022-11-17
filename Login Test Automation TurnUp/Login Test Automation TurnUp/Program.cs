@@ -3,6 +3,11 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using System.Collections.ObjectModel;
 
+IWebElement getTableRowsAfterEdit;
+ReadOnlyCollection<IWebElement> getRowsAfterEditCols;
+ReadOnlyCollection<IWebElement> getColsAfterEdit;
+string str;
+
 
 //open web browser
 IWebDriver driver = new ChromeDriver();
@@ -23,102 +28,127 @@ IWebElement loginPassword = driver.FindElement(By.Id("Password"));
 loginPassword.SendKeys("123123");
 
 //.identify login button and click login to enter main page
-IWebElement loginButton = driver.FindElement(By.XPath("//*[@id=\'loginForm\']/form/div[3]/input[1]"));
+IWebElement loginButton = driver.FindElement(By.XPath("//input[contains(@value,'Log in')]"));
 loginButton.Click();
 //driver.Manage().Window.Maximize();
 
 //identifying an element in the login home page to confirm if our test passed
-IWebElement helloHari = driver.FindElement(By.XPath("//*[@id=\'logoutForm\']/ul/li/a"));
-
+IWebElement helloHari = driver.FindElement(By.XPath("//a[contains(text(),\"Hello hari!\")]"));
 if (helloHari.Displayed == true)
     Console.WriteLine("Test Passed");
 else
     Console.WriteLine("Test Failed");
 
 //Identifying Administration menu item and clicking
-//IWebElement administrationMenuItem = driver.FindElement(By.LinkText("Administration"));//by link text
-IWebElement administrationMenuItem = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));//by full xpath
+IWebElement administrationMenuItem = driver.FindElement(By.XPath("//a[contains(text(),'Administration')]"));
 administrationMenuItem.Click();
 
 //Identifying time and material menu item and clicking
-
-//IWebElement timeAndMaterial = driver.FindElement(By.LinkText("Time & Materials")); //by link text
-//IWebElement timeAndMaterial = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));//by full xpath
-IWebElement timeAndMaterial = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
+IWebElement timeAndMaterial = driver.FindElement(By.XPath("//a[contains(text(),'Time & Materials')]"));
 timeAndMaterial.Click();
 
-//to click and sort the Code tab in time and material pagfe
-//IWebElement codeTab = driver.FindElement(By.XPath("/html/body/div[4]/div/div/div[2]/div/table/thead/tr/th[1]/a"));
-//codeTab.Click();
+Thread.Sleep(3000);
+//Creating a new time and materials node
+IWebElement createNewTimeAndMaterialNode = driver.FindElement(By.XPath("//a[contains(text(),'Create New')]"));
+createNewTimeAndMaterialNode.Click();
+IWebElement inputNewCode = driver.FindElement(By.Id("Code"));
+inputNewCode.SendKeys("1234");
+IWebElement inputDescription = driver.FindElement(By.Id("Description"));
+inputDescription.SendKeys("This is a new record");
+str = inputDescription.Text;
+IWebElement inputPrice = driver.FindElement(By.XPath("//input[@class='k-formatted-value k-input']"));
+//inputPrice.Click();//Because of getting 'element not interactable' error
+inputPrice.SendKeys("100");
+IWebElement saveButton = driver.FindElement(By.Id("SaveButton"));
+saveButton.Click();
 
+Thread.Sleep(2000);
+//navigating to the last page and confirming a new record is created
+IWebElement gotoLastPage = driver.FindElement(By.XPath("//span[contains(text(),'Go to the last page')]"));
+gotoLastPage.Click();
+
+checkTestPassed(str);
+
+Thread.Sleep(2000);
 //to click and sort using the typecode in time and material page
-IWebElement typeCode = driver.FindElement(By.XPath("/html/body/div[4]/div/div/div[2]/div/table/thead/tr/th[2]/a"));
-//Thread.Sleep(5000);
+IWebElement typeCode = driver.FindElement(By.XPath("//a[contains(text(),'TypeCode')]"));
 typeCode.Click();
 
-IWebElement tableGrid = driver.FindElement(By.XPath("/html/body/div[4]/div/div/div[3]/table"));
-Console.WriteLine("just checking");
-Thread.Sleep(5000);
-
-//finding numbers of rows and columns in a table
-IWebElement webTable = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody"));
-ReadOnlyCollection<IWebElement> rows = webTable.FindElements(By.TagName("tr"));
-webTable = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr"));
-ReadOnlyCollection<IWebElement> cols = webTable.FindElements(By.TagName("td"));
-try
-{
-    for (int i = 1; i <= rows.Count(); i++)
-    {
-        IWebElement disp = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[1]"));
-        Console.WriteLine(disp.Text);
-        for (int j = 1; j <= 4; j++)
-        {
-            //Thread.Sleep(2000);
-            //string str = "//*[@id=\\\"tmsGrid\\\"]/div[3]/table/tbody/tr[" + i + "]/td[" + j + "]";
-            IWebElement columns = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[" + j + "]"));
-            Console.Write("     " + columns.Text + "     ");
-        }
-
-    }
-}
-catch
-{
-    Console.WriteLine("catch exception");
-}
-
+Thread.Sleep(2000);
 //clicking page number 2
-IWebElement nextPage = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/ul/li[2]/a"));
+IWebElement nextPage = driver.FindElement(By.XPath("//a[contains(text(),'2')]"));
 nextPage.Click();
-//driver.SwitchTo().Alert().Accept();
 
 //clicking the items per page drop down box
-IWebElement itemsPerPage = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/span[1]/span/span/span[2]/span"));
+IWebElement itemsPerPage = driver.FindElement(By.XPath("//span[contains(text(),'select')]"));
 itemsPerPage.Click();
 
 //selecting 20 items per page from the drop down box
-IWebElement selectItemsPerPage = driver.FindElement(By.XPath("/html/body/div[5]/div/ul/li[3]"));
+IWebElement selectItemsPerPage = driver.FindElement(By.XPath("//li[contains(text(),'20')]"));
 selectItemsPerPage.Click();
 
 //dragging a column header and droping in the tab to group by columns
-IWebElement dragHeaderElement = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[2]/div/table/thead/tr/th[1]/a"));
-//dragHeaderGroupBy.
-IWebElement dropIntoElement = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[1]"));
+IWebElement dragHeaderElement = driver.FindElement(By.XPath("//th[@data-field='Code']"));
+IWebElement dropIntoElement = driver.FindElement(By.XPath("//div[contains(text(),'Drag a column header and drop it here to group by that column')]"));
 
 //selenium actions class object created for drag and drop operation
 Actions builder = new Actions(driver);
-
 builder.DragAndDrop(dragHeaderElement, dropIntoElement).Perform();
+
+Thread.Sleep(10000);
+
+//closing the drag and drop column
+IWebElement closeDragAndDropColumn = driver.FindElement(By.XPath("//span[@class='k-icon k-group-delete']"));
+closeDragAndDropColumn.Click();
+
+Thread.Sleep(3000);
+//Testing edit button
+IWebElement editButton = driver.FindElement(By.XPath("//a[contains(text(),'Edit')][1]"));
+editButton.Click();
+IWebElement codeTextBox = driver.FindElement(By.Id("Code"));
+codeTextBox.Clear();
+codeTextBox.SendKeys("1234512345");
+
+IWebElement editSaveButton = driver.FindElement(By.Id("SaveButton"));
+editSaveButton.Click();
+
+//confirm if the edit has been saved
+checkTestPassed(str);
 
 Thread.Sleep(5000);
 
-//closing the drag and drop column using full xpath(normal xpath won't work)
-IWebElement closeDragAndDropColumn = driver.FindElement(By.XPath("/html/body/div[4]/div/div/div[1]/div/a[2]/span"));
-closeDragAndDropColumn.Click();
+
+//Deleting a record
+Thread.Sleep(2000);
+IWebElement deleteRecord = driver.FindElement(By.XPath("//a[contains(text(),'Delete')][1]"));
+deleteRecord.Click();
+//Confirming ok from the delete alert box
+driver.SwitchTo().Alert().Accept();
+
+void checkTestPassed(string str)
+{
+    //getting all the rows from the table from the page after the edit to confirm if the edit has been done by checking the value
+    Thread.Sleep(5000);
+    getTableRowsAfterEdit = driver.FindElement(By.Id("tmsGrid"));
+    getRowsAfterEditCols = getTableRowsAfterEdit.FindElements(By.TagName("tr"));
+    //displaying all rows in the table on active page
+    for (int i = 0; i <= getRowsAfterEditCols.Count; i++)
+    {
+        if (getRowsAfterEditCols[i].Text.Contains(str))
+        {
+            Console.WriteLine("Test Passed");
+            break;
+        }
+    }
+
+  
+
+}
 
 //logging off from the portal
-helloHari = driver.FindElement(By.XPath("//*[@id=\"logoutForm\"]/ul/li/a"));
+helloHari = driver.FindElement(By.XPath("//a[contains(text(),'Hello hari!')]"));
 helloHari.Click();
-IWebElement logOff = driver.FindElement(By.XPath("//*[@id=\"logoutForm\"]/ul/li/ul/li[2]/a"));
+IWebElement logOff = driver.FindElement(By.XPath("//a[contains(text(),'Log off')]"));
 logOff.Click();
 
 Thread.Sleep(2000);
