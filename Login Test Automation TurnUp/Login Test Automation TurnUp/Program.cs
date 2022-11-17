@@ -65,18 +65,25 @@ IWebElement webTable = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/
 ReadOnlyCollection<IWebElement> rows = webTable.FindElements(By.TagName("tr"));
 webTable = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr"));
 ReadOnlyCollection<IWebElement> cols = webTable.FindElements(By.TagName("td"));
-for (int i = 1; i <= rows.Count(); i++)
+try
 {
-    IWebElement disp = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[1]"));
-    Console.WriteLine(disp.Text);
-    for (int j = 1; j <= 4; j++)
+    for (int i = 1; i <= rows.Count(); i++)
     {
-        //Thread.Sleep(2000);
-        //string str = "//*[@id=\\\"tmsGrid\\\"]/div[3]/table/tbody/tr[" + i + "]/td[" + j + "]";
-        IWebElement columns = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[" + j + "]"));
-        Console.Write("     " + columns.Text + "     ");
+        IWebElement disp = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[1]"));
+        Console.WriteLine(disp.Text);
+        for (int j = 1; j <= 4; j++)
+        {
+            //Thread.Sleep(2000);
+            //string str = "//*[@id=\\\"tmsGrid\\\"]/div[3]/table/tbody/tr[" + i + "]/td[" + j + "]";
+            IWebElement columns = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[" + j + "]"));
+            Console.Write("     " + columns.Text + "     ");
+        }
+
     }
-    
+}
+catch
+{
+    Console.WriteLine("catch exception");
 }
 
 //clicking page number 2
