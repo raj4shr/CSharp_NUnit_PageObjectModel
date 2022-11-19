@@ -1,13 +1,14 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 using System.Collections.ObjectModel;
 
 IWebElement getTableRowsAfterEdit;
 ReadOnlyCollection<IWebElement> getRowsAfterEditCols;
-ReadOnlyCollection<IWebElement> getColsAfterEdit;
+//ReadOnlyCollection<IWebElement> getColsAfterEdit;
 string str;
-
+WebDriverWait waitForElement;
 
 //open web browser
 IWebDriver driver = new ChromeDriver();
@@ -17,7 +18,7 @@ driver.Manage().Window.Maximize();
 //launch turnup portal
 driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login?ReturnUrl=%2f");
 
-Thread.Sleep(2000);
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
 
 //identify username element and send data
 IWebElement loginUsername = driver.FindElement(By.Id("UserName"));
@@ -27,11 +28,13 @@ loginUsername.SendKeys("hari");
 IWebElement loginPassword = driver.FindElement(By.Id("Password"));
 loginPassword.SendKeys("123123");
 
+/*Actions enterButtonPressed = new Actions(driver);
+enterButtonPressed.SendKeys(Keys.Enter);*/
+
 //.identify login button and click login to enter main page
 IWebElement loginButton = driver.FindElement(By.XPath("//input[contains(@value,'Log in')]"));
 loginButton.Click();
-//driver.Manage().Window.Maximize();
-
+//driver.Manage().Window.Maximize();*/
 //identifying an element in the login home page to confirm if our test passed
 IWebElement helloHari = driver.FindElement(By.XPath("//a[contains(text(),\"Hello hari!\")]"));
 if (helloHari.Displayed == true)
@@ -47,7 +50,7 @@ administrationMenuItem.Click();
 IWebElement timeAndMaterial = driver.FindElement(By.XPath("//a[contains(text(),'Time & Materials')]"));
 timeAndMaterial.Click();
 
-Thread.Sleep(3000);
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 //Creating a new time and materials node
 IWebElement createNewTimeAndMaterialNode = driver.FindElement(By.XPath("//a[contains(text(),'Create New')]"));
 createNewTimeAndMaterialNode.Click();
@@ -62,19 +65,19 @@ inputPrice.SendKeys("100");
 IWebElement saveButton = driver.FindElement(By.Id("SaveButton"));
 saveButton.Click();
 
-Thread.Sleep(2000);
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 //navigating to the last page and confirming a new record is created
 IWebElement gotoLastPage = driver.FindElement(By.XPath("//span[contains(text(),'Go to the last page')]"));
 gotoLastPage.Click();
 
 checkTestPassed(str);
 
-Thread.Sleep(2000);
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 //to click and sort using the typecode in time and material page
 IWebElement typeCode = driver.FindElement(By.XPath("//a[contains(text(),'TypeCode')]"));
 typeCode.Click();
 
-Thread.Sleep(2000);
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 //clicking page number 2
 IWebElement nextPage = driver.FindElement(By.XPath("//a[contains(text(),'2')]"));
 nextPage.Click();
@@ -95,13 +98,13 @@ IWebElement dropIntoElement = driver.FindElement(By.XPath("//div[contains(text()
 Actions builder = new Actions(driver);
 builder.DragAndDrop(dragHeaderElement, dropIntoElement).Perform();
 
-Thread.Sleep(10000);
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
 //closing the drag and drop column
 IWebElement closeDragAndDropColumn = driver.FindElement(By.XPath("//span[@class='k-icon k-group-delete']"));
 closeDragAndDropColumn.Click();
 
-Thread.Sleep(3000);
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 //Testing edit button
 IWebElement editButton = driver.FindElement(By.XPath("//a[contains(text(),'Edit')][1]"));
 editButton.Click();
@@ -115,11 +118,10 @@ editSaveButton.Click();
 //confirm if the edit has been saved
 checkTestPassed(str);
 
-Thread.Sleep(5000);
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
 
 //Deleting a record
-Thread.Sleep(2000);
 IWebElement deleteRecord = driver.FindElement(By.XPath("//a[contains(text(),'Delete')][1]"));
 deleteRecord.Click();
 //Confirming ok from the delete alert box
@@ -128,7 +130,7 @@ driver.SwitchTo().Alert().Accept();
 void checkTestPassed(string str)
 {
     //getting all the rows from the table from the page after the edit to confirm if the edit has been done by checking the value
-    Thread.Sleep(5000);
+    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
     getTableRowsAfterEdit = driver.FindElement(By.Id("tmsGrid"));
     getRowsAfterEditCols = getTableRowsAfterEdit.FindElements(By.TagName("tr"));
     //displaying all rows in the table on active page
@@ -151,7 +153,7 @@ helloHari.Click();
 IWebElement logOff = driver.FindElement(By.XPath("//a[contains(text(),'Log off')]"));
 logOff.Click();
 
-Thread.Sleep(2000);
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 //closing the chrome browser
 driver.Close();
 
