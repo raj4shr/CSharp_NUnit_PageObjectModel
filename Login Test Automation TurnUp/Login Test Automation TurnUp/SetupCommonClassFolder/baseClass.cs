@@ -1,7 +1,12 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System.Collections.ObjectModel;
-using System.Security.Cryptography.X509Certificates;
+﻿global using OpenQA.Selenium;
+global using OpenQA.Selenium.Support.UI;
+global using System.Collections.ObjectModel;
+global using NUnit.Framework;
+global using OpenQA.Selenium.Interactions;
+global using Login_Test_Automation_TurnUp.Pages;
+global using Login_Test_Automation_TurnUp.SetupCommonClassFolder;
+global using OpenQA.Selenium.Chrome;
+
 
 namespace Login_Test_Automation_TurnUp;
 
