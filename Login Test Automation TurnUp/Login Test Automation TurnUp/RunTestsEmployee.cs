@@ -51,4 +51,13 @@ public class RunTestsEmployee : SetupCommonClassFolder.WebDriver
         EDAD.dragAnddropClose(chromeDriver);
     }
 
+    [Test]
+    public void childWindow()
+    {
+        EmployeesPage employee = new();
+        employee.gotoEmployeePage(chromeDriver);
+        TestingChildWindows TCW = new();
+        TCW.HandleChildWindow(chromeDriver);
+    }
+
 }
