@@ -6,7 +6,7 @@ namespace Login_Test_Automation_TurnUp;
 public class RunTestsEmployee : SetupCommonClassFolder.WebDriver
 {
     
-    [Test]
+    [Test,Order(1)]
     public void CreateNewEmployee()
     {
         EmployeesPage employee = new();
@@ -15,7 +15,7 @@ public class RunTestsEmployee : SetupCommonClassFolder.WebDriver
         CNEP.CreateNewEmployee(chromeDriver);
     }
 
-    [Test]
+    [Test,Order(3)]
     public void DeleteEmployee()
     {
         EmployeesPage employee = new();
@@ -24,7 +24,7 @@ public class RunTestsEmployee : SetupCommonClassFolder.WebDriver
         EDP.DeleteEmployee(chromeDriver);
     }
 
-    [Test]
+    [Test,Order(2)]
     public void EditEmployeePage()
     {
         EmployeesPage employee = new();
@@ -33,7 +33,7 @@ public class RunTestsEmployee : SetupCommonClassFolder.WebDriver
         EEP.editEmployee(chromeDriver);
     }
 
-    [Test]
+    [Test,Order(4)]
     public void DragAndDrop()
     {
         EmployeesPage employee = new();
@@ -42,7 +42,7 @@ public class RunTestsEmployee : SetupCommonClassFolder.WebDriver
         EPDAD.dragAnddropEmployee(chromeDriver);
     }
 
-    [Test]
+    [Test,Order(5)]
     public void DragAndDropClose()
     {
         EmployeesPage employee = new();

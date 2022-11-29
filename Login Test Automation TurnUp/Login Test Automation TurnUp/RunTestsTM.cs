@@ -7,7 +7,7 @@ namespace Login_Test_Automation_TurnUp;
 public class RunTestsTM : SetupCommonClassFolder.WebDriver
 {
     
-    [Test]
+    [Test,Order(1)]
     public void createNewTimeandMaterial()
     {
         TimeAndMaterial gotoTimeAndMaterial = new TimeAndMaterial();
@@ -16,7 +16,7 @@ public class RunTestsTM : SetupCommonClassFolder.WebDriver
         createNewTimeAndMaterial.createNewTandM(chromeDriver);
     }
 
-    [Test]
+    [Test,Order(2)]
     public void editTimeandMaterialRow()
     {
         TimeAndMaterial gotoTimeAndMaterial = new TimeAndMaterial();
@@ -25,7 +25,7 @@ public class RunTestsTM : SetupCommonClassFolder.WebDriver
         editTM.editTimeAndMaterial(chromeDriver);
     }
 
-    [Test]
+    [Test,Order(3)]
     public void DragAndDropByColumnName()
     {
         TimeAndMaterial gotoTimeAndMaterial = new TimeAndMaterial();
@@ -34,7 +34,7 @@ public class RunTestsTM : SetupCommonClassFolder.WebDriver
         DaD.dragAnddrop(chromeDriver);
     }
 
-    [Test]
+    [Test,Order(4)]
     public void DragAndDropClose()
     {
         TimeAndMaterial gotoTimeAndMaterial = new TimeAndMaterial();
@@ -43,7 +43,7 @@ public class RunTestsTM : SetupCommonClassFolder.WebDriver
         DaD.dragAnddropClose(chromeDriver);
     }
 
-    [Test]
+    [Test,Order(5)]
     public void DeleteTimeAndMaterialRecord()
     {
         TimeAndMaterial gotoTimeAndMaterial = new TimeAndMaterial();

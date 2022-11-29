@@ -21,8 +21,8 @@ public class EditEmployeePage
         {
             if (rows[i].FindElements(By.TagName("td"))[0].Text == "Atreus")
             {
-                //Console.WriteLine("Time and material record has been edited");
-                Assert.Pass();
+                Console.WriteLine("Time and material record has been edited");
+                //Assert.Pass();
             }
         }
     }

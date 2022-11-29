@@ -1,13 +1,24 @@
 ﻿
 
+using OpenQA.Selenium.Chrome;
+
 namespace Login_Test_Automation_TurnUp.EmployeeFolder;
 
 public class CreateNewEmployeePage : findByLocator
 {
+    private string name = "";
+
+    private turnUpPortalBaseClass baseClass;
+
+    public CreateNewEmployeePage()
+    {
+        baseClass = new();
+    }
+
     public void CreateNewEmployee(IWebDriver chromeDriver)
     {
-        turnUpPortalBaseClass baseClass = new();
-        string name = baseClass.firstNameRand();
+        //turnUpPortalBaseClass baseClass = new();
+        name = baseClass.firstNameRand()+baseClass.middleNameRand();
         string contact = "";
         baseClass.findElementOnPage(chromeDriver, "//a[contains(text(),'Create')]", FindBy.XPath).Click();
         baseClass.findElementOnPage(chromeDriver, "Name", FindBy.Id).SendKeys(name);
@@ -33,8 +44,25 @@ public class CreateNewEmployeePage : findByLocator
         baseClass.findElementOnPage(chromeDriver, "RetypePassword", FindBy.Id).SendKeys("123asdA#");
         baseClass.findElementOnPage(chromeDriver, "SaveButton", FindBy.Id).Click();
         baseClass.findElementOnPage(chromeDriver, "//a[contains(text(),'Back to List')]", FindBy.XPath).Click();
-        baseClass.findElementOnPage(chromeDriver, "//span[contains(text(),'Go to the last page')]", FindBy.XPath).Click();
         Thread.Sleep(3000);
+        //baseClass.findElementOnPage(chromeDriver, "//span[contains(text(),'Go to the last page')]", FindBy.XPath).Click();
+        Thread.Sleep(3000);
+    }
+
+    public void CheckCreatedEmployee(IWebDriver chromeDriver)
+    {
+        baseClass.findElementOnPage(chromeDriver, "//span[contains(text(),'Go to the last page')]", FindBy.XPath).Click();
+        ReadOnlyCollection<IWebElement> rows = baseClass.findElementsOnPage(chromeDriver, "//tr[@role='row']", FindBy.XPath);
+        for(int i=0;i<rows.Count;i++)
+        {
+            Console.WriteLine(rows[i].FindElements(By.TagName("td"))[0].Text);
+            if (rows[i].FindElements(By.TagName("td"))[0].Text == name)
+            {
+                Assert.That(rows[i].FindElements(By.TagName("td"))[0].Text == name);
+                //Console.WriteLine("Record created");
+            }
+        }
+
     }
 }
 
