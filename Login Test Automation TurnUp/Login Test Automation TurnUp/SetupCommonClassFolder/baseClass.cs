@@ -6,12 +6,65 @@ global using OpenQA.Selenium.Interactions;
 global using Login_Test_Automation_TurnUp.Pages;
 global using Login_Test_Automation_TurnUp.SetupCommonClassFolder;
 global using OpenQA.Selenium.Chrome;
-
+using OpenQA.Selenium.DevTools.V105.Debugger;
 
 namespace Login_Test_Automation_TurnUp;
 
 public class turnUpPortalBaseClass : findByLocator
 {
+    private string[] firstName = new string[]
+    {
+        "Harry","Ross",
+        "Bruce","Cook",
+        "Carolyn","Morgan",
+        "Albert","Walker",
+        "Randy","Reed",
+        "Larry","Barnes",
+        "Lois","Wilson",
+        "Jesse","Campbell",
+        "Ernest","Rogers",
+        "Theresa","Patterson",
+        "Henry","Simmons",
+        "Michelle","Perry",
+        "Frank","Butler",
+        "Shirley"
+    };
+
+    private string[] middleName = new string[]
+    {
+        "Brooks",
+        "Rachel","Edwards",
+        "Christopher","Perez",
+        "Thomas","Baker",
+        "Sara","Moore",
+        "Chris","Bailey",
+        "Roger","Johnson",
+        "Marilyn","Thompson",
+        "Anthony","Evans",
+        "Julie","Hall",
+        "Paula","Phillips",
+        "Annie","Hernandez",
+        "Dorothy","Murphy",
+        "Alice","Howard"
+    };
+
+    private string[] lastName = new string[]
+    {
+        "Ruth","Jackson",
+        "Debra","Allen",
+        "Gerald","Harris",
+        "Raymond","Carter",
+        "Jacqueline","Torres",
+        "Joseph","Nelson",
+        "Carlos","Sanchez",
+        "Ralph","Clark",
+        "Jean","Alexander",
+        "Stephen","Roberts",
+        "Eric","Long",
+        "Amanda","Scott",
+        "Teresa","Diaz",
+        "Wanda"
+    };
     public IWebElement findElementOnPage(IWebDriver chromeDriver, string path, FindBy findBy)
     {
         IWebElement element = null;
@@ -179,6 +232,44 @@ public class turnUpPortalBaseClass : findByLocator
         chromeDriver.SwitchTo().DefaultContent();
     }
 
+    public string RandomName()
+    {
+        Random rand = new Random(); 
+        int index=rand.Next(1, 27);
+        return firstName[index] + " " + middleName[index] + " " + lastName[index];
+    }
 
+    public string firstNameRand()
+    {
+        Random rand = new Random();
+        int index = rand.Next(1, 27);
+        return firstName[index];
+    }
+    public string middleNameRand()
+    {
+        Random rand = new Random();
+        int index = rand.Next(1, 27);
+        return middleName[index];
+    }
+    public string lastNameRand()
+    {
+        Random rand = new Random();
+        int index = rand.Next(1, 27);
+        return lastName[index];
+    }
+    public string emailRand(string name)
+    {
+        return name +"@gmail.com";
+    }
 
+    public string phoneRand()
+    {
+        string phoneNumber = "021";
+        Random rand = new Random();
+        for(int i=0;i<7;i++)
+        {
+            phoneNumber = phoneNumber + rand.Next(0, 9);
+        }
+        return phoneNumber;
+    }
 }
