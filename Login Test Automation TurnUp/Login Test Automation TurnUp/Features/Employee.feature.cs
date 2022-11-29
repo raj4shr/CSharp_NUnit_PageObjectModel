@@ -73,6 +73,18 @@ namespace Login_Test_Automation_TurnUp.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 5
+#line hidden
+#line 6
+ testRunner.Given("I logged into turnup portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 7
+ testRunner.When("I navigate to the employees page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Create a new employee")]
         public void CreateANewEmployee()
@@ -80,7 +92,7 @@ namespace Login_Test_Automation_TurnUp.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a new employee", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 6
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -90,16 +102,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
- testRunner.Given("I logged into turnup portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 5
+this.FeatureBackground();
 #line hidden
-#line 8
- testRunner.When("I navigate to the employees page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 9
+#line 11
  testRunner.When("I have created a new employee record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 10
+#line 12
  testRunner.Then("A new employee should be created sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -113,7 +122,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit an employee", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 12
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -123,11 +132,8 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 13
- testRunner.Given("I logged into turnup portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 14
- testRunner.When("I navigate to the employees page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 5
+this.FeatureBackground();
 #line hidden
 #line 15
  testRunner.When("I have edited a employee record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -156,16 +162,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
 #line 19
- testRunner.Given("I logged into turnup portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I have deleted an employee record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 20
- testRunner.When("I navigate to the employees page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 21
- testRunner.And("I have deleted an employee record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 22
  testRunner.Then("Employee record should be deleted successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -179,7 +182,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Drag and drop", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 24
+#line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -189,16 +192,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 25
- testRunner.Given("I logged into turnup portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 5
+this.FeatureBackground();
 #line hidden
-#line 26
- testRunner.When("I navigate to the employees page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 23
+ testRunner.When("I have dragged and dropped a column tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 27
- testRunner.And("I have dragged and dropped a column tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 28
+#line 24
  testRunner.Then("the employee page should be sorted successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

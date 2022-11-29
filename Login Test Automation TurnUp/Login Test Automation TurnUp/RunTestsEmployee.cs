@@ -13,6 +13,7 @@ public class RunTestsEmployee : SetupCommonClassFolder.WebDriver
         employee.gotoEmployeePage(chromeDriver);
         CreateNewEmployeePage CNEP = new();
         CNEP.CreateNewEmployee(chromeDriver);
+        CNEP.CheckCreatedEmployee(chromeDriver);
     }
 
     [Test,Order(3)]

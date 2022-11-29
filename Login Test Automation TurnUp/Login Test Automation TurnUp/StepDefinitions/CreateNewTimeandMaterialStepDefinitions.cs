@@ -1,32 +1,37 @@
 using TechTalk.SpecFlow;
+using Login_Test_Automation_TurnUp;
+using WebDriver = Login_Test_Automation_TurnUp.SetupCommonClassFolder.WebDriver;
 
 namespace Login_Test_Automation_TurnUp.StepDefinitions
 {
     [Binding]
-    public class CreateNewTimeandMaterialStepDefinitions
+    public class CreateNewTimeandMaterialStepDefinitions : WebDriver
     {
-        [Given(@"I logged into turn up portal successfully")]
-        public void GivenILoggedIntoTurnUpPortalSuccessfully()
-        {
-            throw new PendingStepException();
-        }
+        NewTimeAndMaterial? NTAM;
 
         [When(@"I navigate to the time and material page")]
         public void WhenINavigateToTheTimeAndMaterialPage()
         {
-            throw new PendingStepException();
+            TimeAndMaterial TAM = new();
+            TAM.gotoTimeAndMaterial(chromeDriver);
         }
 
-        [When(@"I create a new time and material record")]
-        public void WhenICreateANewTimeAndMaterialRecord()
+        
+  
+        [When(@"I have created a new time and material record")]
+        public void WhenIHaveCreatedANewTimeAndMaterialRecord()
         {
-            throw new PendingStepException();
+            NTAM = new();
+            NTAM.createNewTandM(chromeDriver);
         }
 
-        [Then(@"A new time and material record should be created")]
-        public void ThenANewTimeAndMaterialRecordShouldBeCreated()
+        [Then(@"A new time and material should be created sucessfully")]
+        public void ThenANewTimeAndMaterialShouldBeCreatedSucessfully()
         {
-            throw new PendingStepException();
+            NTAM.checkNewTimeAndMaterialCreated(chromeDriver);
+            chromeDriver.Quit();
         }
+
+
     }
 }

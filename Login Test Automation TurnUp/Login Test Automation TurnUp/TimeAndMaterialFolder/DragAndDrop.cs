@@ -31,4 +31,11 @@ public class DragAndDrop : findByLocator
         baseClass.findElementOnPageClickable(chromeDriver, "//span[@class='k-icon k-group-delete']", FindBy.XPath).Click();
 
     }
+
+    public void dragAnddropCloseBDD(IWebDriver chromeDriver)
+    {
+        turnUpPortalBaseClass baseClass = new();
+        baseClass.findElementOnPageClickable(chromeDriver, "//span[@class='k-icon k-group-delete']", FindBy.XPath).Click();
+
+    }
 }

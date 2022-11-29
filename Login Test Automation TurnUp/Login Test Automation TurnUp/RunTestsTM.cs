@@ -23,6 +23,7 @@ public class RunTestsTM : SetupCommonClassFolder.WebDriver
         gotoTimeAndMaterial.gotoTimeAndMaterial(chromeDriver);
         EditTandM editTM = new();
         editTM.editTimeAndMaterial(chromeDriver);
+        editTM.checkEditTimeAndMaterial(chromeDriver);
     }
 
     [Test,Order(3)]

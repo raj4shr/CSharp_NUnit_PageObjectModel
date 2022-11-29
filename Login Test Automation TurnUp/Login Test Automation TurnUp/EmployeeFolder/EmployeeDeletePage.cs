@@ -1,10 +1,8 @@
 ﻿
 
-using static Login_Test_Automation_TurnUp.findByLocator;
-
 namespace Login_Test_Automation_TurnUp.EmployeeFolder;
 
-public class EmployeeDeletePage
+public class EmployeeDeletePage : findByLocator
 {
     public void DeleteEmployee(IWebDriver chromeDriver)
     {

@@ -20,8 +20,8 @@ namespace Login_Test_Automation_TurnUp.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Create new Time and Material")]
-    public partial class CreateNewTimeAndMaterialFeature
+    [NUnit.Framework.DescriptionAttribute("Create a new time and material")]
+    public partial class CreateANewTimeAndMaterialFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace Login_Test_Automation_TurnUp.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Create new Time and Material", "As a user, I should be able to create, edit and delete time and material info", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Create a new time and material", "As a user, I should be able to create, edit and delete time and material ", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -73,14 +73,26 @@ namespace Login_Test_Automation_TurnUp.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 5
+#line hidden
+#line 6
+ testRunner.Given("I logged into turnup portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 7
+ testRunner.When("I navigate to the time and material page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create time and material record with valid details")]
-        public void CreateTimeAndMaterialRecordWithValidDetails()
+        [NUnit.Framework.DescriptionAttribute("Create a new time and material")]
+        public void CreateANewTimeAndMaterial()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create time and material record with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a new time and material", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -90,17 +102,104 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
- testRunner.Given("I logged into turn up portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 5
+this.FeatureBackground();
 #line hidden
-#line 8
- testRunner.When("I navigate to the time and material page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
+ testRunner.When("I have created a new time and material record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 9
- testRunner.And("I create a new time and material record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
+ testRunner.Then("A new time and material should be created sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 10
- testRunner.Then("A new time and material record should be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit time and material")]
+        public void EditTimeAndMaterial()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit time and material", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 15
+ testRunner.When("I have edited a time and material record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 16
+ testRunner.Then("time and material record should be edited successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Delete time and material")]
+        public void DeleteTimeAndMaterial()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete time and material", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 18
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 19
+ testRunner.When("I have deleted an time and material record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 20
+ testRunner.Then("Time and material record should be deleted successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Drag and drop")]
+        public void DragAndDrop()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Drag and drop", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 22
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 5
+this.FeatureBackground();
+#line hidden
+#line 23
+ testRunner.When("I have dragged and dropped a column tab in time and material page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 24
+ testRunner.Then("The time and material page should be sorted successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
