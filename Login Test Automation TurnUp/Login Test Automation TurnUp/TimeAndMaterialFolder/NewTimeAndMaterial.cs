@@ -1,35 +1,45 @@
-﻿
-
-namespace Login_Test_Automation_TurnUp.Pages;
+﻿namespace Login_Test_Automation_TurnUp.Pages;
 
 public class NewTimeAndMaterial : findByLocator
 {
-    turnUpPortalBaseClass? baseClass;
+    private turnUpPortalBaseClass? baseClass;
     string str = "";
-    public void createNewTandM(IWebDriver chromeDriver)
+
+    public NewTimeAndMaterial()
     {
         baseClass = new();
+    }
+    public void createNewTandM(IWebDriver chromeDriver)
+    {
+        //Finding and clicking the create new button
         baseClass.findElementOnPage(chromeDriver, "//a[contains(text(),'Create New')]", FindBy.XPath).Click();
-        str = "Code0";
+        //Generating a random code for input code value in the element
+        str = baseClass.phoneRand();
         baseClass.findElementOnPage(chromeDriver, "Code", FindBy.Id).SendKeys(str);
+        //Finding and inputting rest of the elements
         baseClass.findElementOnPage(chromeDriver, "Description", FindBy.Id).SendKeys("This record is new");
         baseClass.findElementOnPage(chromeDriver, "//input[@class='k-formatted-value k-input']", FindBy.XPath).SendKeys("100");
+        //Finding and clicking the save button
         baseClass.findElementOnPage(chromeDriver, "SaveButton", FindBy.Id).Click();
-        baseClass.findElementOnPage(chromeDriver, "//a[@title='Go to the last page'][@class='k-link k-pager-nav k-pager-last']", FindBy.XPath).Click();
-        //ReadOnlyCollection<IWebElement> rows = baseClass.findElementsOnPage(chromeDriver, "//tr[@role='row']", FindBy.XPath);
-        //Assert.That(rows[rows.Count - 1].FindElements(By.TagName("td"))[0].Text == str,"New record has been created");
-        checkNewTimeAndMaterialCreated(chromeDriver);
+        Thread.Sleep(3000);
     }
 
     public void checkNewTimeAndMaterialCreated(IWebDriver chromeDriver)
     {
+        bool created=false;
+        //Finding and clicking the goto last button
+        baseClass.findElementOnPage(chromeDriver, "//a[@title='Go to the last page'][@class='k-link k-pager-nav k-pager-last']", FindBy.XPath).Click();
+        //Getting all the rows from the data table to check if new time and material record has been created
         ReadOnlyCollection<IWebElement> rows = baseClass.findElementsOnPage(chromeDriver, "//tr[@role='row']", FindBy.XPath);
-        for(int i = 0; i < rows.Count; i++)
+        ReadOnlyCollection<IWebElement>? cols;
+        for (int i = 0; i < rows.Count; i++)
         {
-            if (rows[i].FindElements(By.TagName("td"))[0].Text == str)
+            cols = rows[i].FindElements(By.TagName("td"));
+            if (cols[0].Text == str)
             {
-                Console.WriteLine("Time and Material record has been edited successfully");
+                created = true;
             }
         }
+        Assert.That(created, Is.True,"Time and Material record has not been created");
     }
 }

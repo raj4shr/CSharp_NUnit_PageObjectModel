@@ -11,9 +11,16 @@ Scenario: Create a new employee
 	When I have created a new employee record
 	Then A new employee should be created sucessfully
 
-Scenario: Edit an employee
-	When I have edited a employee record
-	Then Employee record should be edited successfully
+Scenario Outline: Edit an employee
+	When I have edited a employee record '<userName>' with respective '<row>'
+	Then Employee record '<userName>' should be edited successfully withrespect to the relavent '<row>'
+
+	Examples: 
+	|   userName		         | row |
+	|   OutlineUsernameSecondtry |  1  |
+	|   OutlineUsernameSecondtry |  2  |
+	|   OutlineUsernameSecondtry |  3  |
+
 
 Scenario: Delete an employee
 	When I have deleted an employee record
