@@ -1,8 +1,6 @@
-﻿using Login_Test_Automation_TurnUp.EmployeeFolder;
-using TechTalk.SpecFlow;
-using WebDriver = Login_Test_Automation_TurnUp.SetupCommonClassFolder.WebDriver;
+﻿using WebDriver = Login_Test_Automation_TurnUp.SetupCommonClassFolder.WebDriver;
 
-namespace Login_Test_Automation_TurnUp.StepDefinitions
+namespace Login_Test_Automation_TurnUp.StepDefinitions.Employee
 {
     [Binding]
     public class DeleteEmployeeStepDefinitions : WebDriver

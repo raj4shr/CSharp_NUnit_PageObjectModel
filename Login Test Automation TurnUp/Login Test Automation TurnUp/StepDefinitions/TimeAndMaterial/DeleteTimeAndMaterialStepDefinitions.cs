@@ -1,8 +1,6 @@
-﻿using Login_Test_Automation_TurnUp;
-using TechTalk.SpecFlow;
-using WebDriver = Login_Test_Automation_TurnUp.SetupCommonClassFolder.WebDriver;
+﻿using WebDriver = Login_Test_Automation_TurnUp.SetupCommonClassFolder.WebDriver;
 
-namespace Login_Test_Automation_TurnUp.StepDefinitions
+namespace Login_Test_Automation_TurnUp.StepDefinitions.TimeAndMaterial
 {
     [Binding]
     public class DeleteTimeAndMaterialStepDefinitions : WebDriver
@@ -21,7 +19,7 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions
         {
             Console.WriteLine("Time and material record has been deleted successfully.....");
             chromeDriver.Quit();
-           // throw new PendingStepException();
+            // throw new PendingStepException();
         }
 
 

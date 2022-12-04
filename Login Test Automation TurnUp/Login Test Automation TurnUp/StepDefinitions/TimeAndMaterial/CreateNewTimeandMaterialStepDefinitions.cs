@@ -1,8 +1,7 @@
-using TechTalk.SpecFlow;
-using Login_Test_Automation_TurnUp;
 using WebDriver = Login_Test_Automation_TurnUp.SetupCommonClassFolder.WebDriver;
 
-namespace Login_Test_Automation_TurnUp.StepDefinitions
+
+namespace Login_Test_Automation_TurnUp.StepDefinitions.TimeAndMaterial
 {
     [Binding]
     public class CreateNewTimeandMaterialStepDefinitions : WebDriver
@@ -11,13 +10,13 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions
 
         [When(@"I navigate to the time and material page")]
         public void WhenINavigateToTheTimeAndMaterialPage()
-        {
-            TimeAndMaterial TAM = new();
+        { 
+            Login_Test_Automation_TurnUp.Pages.TimeAndMaterial TAM = new();
             TAM.gotoTimeAndMaterial(chromeDriver);
         }
 
-        
-  
+
+
         [When(@"I have created a new time and material record")]
         public void WhenIHaveCreatedANewTimeAndMaterialRecord()
         {

@@ -16,10 +16,10 @@ Scenario Outline: Edit an employee
 	Then Employee record '<userName>' should be edited successfully withrespect to the relavent '<row>'
 
 	Examples: 
-	|   userName		         | row |
-	|   OutlineUsernameSecondtry |  1  |
-	|   OutlineUsernameSecondtry |  2  |
-	|   OutlineUsernameSecondtry |  3  |
+	|   userName		| row |
+	|   This_is_updated |  1  |
+	|   This_is_updated |  2  |
+	|   This is updated |  3  |
 
 
 Scenario: Delete an employee
@@ -27,5 +27,7 @@ Scenario: Delete an employee
 	Then Employee record should be deleted successfully
 
 Scenario: Drag and drop
+this is a drag and drop operation perfomed by the user by dragging and dropping any column header into the drop element
+
 	When I have dragged and dropped a column tab
 	Then the employee page should be sorted successfully

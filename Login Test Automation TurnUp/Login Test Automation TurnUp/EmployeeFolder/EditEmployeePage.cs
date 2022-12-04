@@ -22,7 +22,8 @@ public class EditEmployeePage
         //Finding and clicking the save button after the edit
         baseClass.findElementOnPage(chromeDriver, "SaveButton", FindBy.Id).Click();
         //Finding and clicking the save to list hyperlink
-        baseClass.findElementOnPage(chromeDriver, "//a[contains(text(),'Back to List')]", FindBy.XPath).Click();
+        //baseClass.findElementOnPage(chromeDriver, "//a[contains(text(),'Back to List')]", FindBy.XPath).Click();
+        baseClass.findElementOnPage(chromeDriver, "//a[text()='Back to List']", FindBy.XPath).Click();
     }
 
     public void verifyEmployeeEdit(IWebDriver chromeDriver,string userName,int rowId)

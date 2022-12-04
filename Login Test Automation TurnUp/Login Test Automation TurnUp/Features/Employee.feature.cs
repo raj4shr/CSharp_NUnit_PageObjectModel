@@ -117,9 +117,9 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Edit an employee")]
-        [NUnit.Framework.TestCaseAttribute("OutlineUsernameSecondtry", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("OutlineUsernameSecondtry", "2", null)]
-        [NUnit.Framework.TestCaseAttribute("OutlineUsernameSecondtry", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("This_is_updated", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("This_is_updated", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("This is updated", "3", null)]
         public void EditAnEmployee(string userName, string row, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -187,7 +187,8 @@ this.FeatureBackground();
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Drag and drop", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Drag and drop", "this is a drag and drop operation perfomed by the user by dragging and dropping a" +
+                    "ny column header into the drop element", tagsOfScenario, argumentsOfScenario, featureTags);
 #line 29
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -201,10 +202,10 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line hidden
-#line 30
+#line 32
  testRunner.When("I have dragged and dropped a column tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 31
+#line 33
  testRunner.Then("the employee page should be sorted successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

@@ -4,10 +4,13 @@ global using System.Collections.ObjectModel;
 global using NUnit.Framework;
 global using OpenQA.Selenium.Interactions;
 global using Login_Test_Automation_TurnUp.Pages;
-global using Login_Test_Automation_TurnUp.SetupCommonClassFolder;
 global using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.DevTools.V105.Debugger;
-
+global using TechTalk.SpecFlow;
+global using System.Diagnostics;
+global using Login_Test_Automation_TurnUp.EmployeeFolder;
+global using TechTalk.SpecFlow.Infrastructure;
+global using Login_Test_Automation_TurnUp.StepDefinitions.Employee;
+global using Login_Test_Automation_TurnUp.StepDefinitions.Employee;
 namespace Login_Test_Automation_TurnUp;
 
 public class turnUpPortalBaseClass : findByLocator
@@ -106,14 +109,14 @@ public class turnUpPortalBaseClass : findByLocator
             element = chromeDriver.FindElement(By.LinkText(path));
         }
 
-        if (element == null)
+        /*if (element == null)
         {
             Console.WriteLine("Element not found!");
         }
         else
         {
             Console.WriteLine("Element found!");
-        }
+        }*/
         return element;
     }
 
@@ -158,14 +161,14 @@ public class turnUpPortalBaseClass : findByLocator
             element = chromeDriver.FindElement(By.LinkText(path));
         }
 
-        if (element == null)
+        /*if (element == null)
         {
             Console.WriteLine("Element not found!");
         }
         else
         {
             Console.WriteLine("Element found!");
-        }
+        }*/
         return element;
     }
 
@@ -210,14 +213,14 @@ public class turnUpPortalBaseClass : findByLocator
             elements = chromeDriver.FindElements(By.LinkText(path));
         }
 
-        if (elements == null)
+        /*if (elements == null)
         {
             Console.WriteLine("Element not found!");
         }
         else
         {
             Console.WriteLine("Element found!");
-        }
+        }*/
         return elements;
     }
 
