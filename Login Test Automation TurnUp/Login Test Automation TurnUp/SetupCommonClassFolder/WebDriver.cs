@@ -1,10 +1,12 @@
 ﻿
 
 namespace Login_Test_Automation_TurnUp.SetupCommonClassFolder;
+[Parallelizable]
 public class WebDriver
 {
-    public static IWebDriver? chromeDriver;
-   
+  
+    public IWebDriver? chromeDriver { get; set; }
+
     [SetUp]
     public void login()
     {
