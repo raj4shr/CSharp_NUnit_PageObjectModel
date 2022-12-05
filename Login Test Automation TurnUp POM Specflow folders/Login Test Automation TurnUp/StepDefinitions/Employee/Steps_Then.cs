@@ -7,33 +7,33 @@ using System.Threading.Tasks;
 
 namespace Login_Test_Automation_TurnUp.StepDefinitions.Employee
 {
-    public partial class Employee_StepDefinitions
+    public partial class Employee_StepDefinitions 
     {
         [Then(@"A new employee should be created sucessfully")]
         public void ThenANewEmployeeShouldBeCreatedSucessfully()
         {
-            newEmployee.CheckCreatedEmployee(chromeDriver);
-            chromeDriver.Quit();
+            newEmployee.CheckCreatedEmployee(wd.chromeDriver);
+            wd.chromeDriver.Quit();
         }
 
         [Then(@"the employee page should be sorted successfully")]
         public void ThenTheEmployeePageShouldBeSortedSuccessfully()
         {
             Thread.Sleep(3000);
-            employeeDAD.dragAnddropCloseBDD(chromeDriver);
-            chromeDriver.Quit();
+            employeeDAD.dragAnddropCloseBDD(wd.chromeDriver);
+            wd.chromeDriver.Quit();
         }
         [Then(@"Employee record should be deleted successfully")]
         public void ThenEmployeeRecordShouldBeDeletedSuccessfully()
         {
-            chromeDriver.Quit();
+            wd.chromeDriver.Quit();
         }
 
         [Then(@"Employee record '([^']*)' should be edited successfully withrespect to the relavent '([^']*)'")]
         public void ThenEmployeeRecordShouldBeEditedSuccessfullyWithrespectToTheRelavent(string userName, string row)
         {
-            editEmployee.verifyEmployeeEdit(chromeDriver, userName, int.Parse(row));
-            chromeDriver.Quit();
+            editEmployee.verifyEmployeeEdit(wd.chromeDriver, userName, int.Parse(row));
+            wd.chromeDriver.Quit();
         }
     }
 }

@@ -2,9 +2,11 @@
 
 As a user, I should be able to create, edit and delete time and material 
 
+
 Background: 
-	Given I logged into turnup portal successfully
+	Given I logged into turnup portal TAM successfully
 	When I navigate to the time and material page
+
 
 
 Scenario: Create a new time and material

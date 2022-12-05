@@ -1,10 +1,11 @@
 ﻿Feature: Create a new employee
 
 As a user, I should be able to create, edit and delete employee 
-
 Background: 
 	Given I logged into turnup portal successfully
 	When I navigate to the employees page
+
+
 
 
 Scenario: Create a new employee
@@ -28,6 +29,5 @@ Scenario: Delete an employee
 
 Scenario: Drag and drop
 this is a drag and drop operation perfomed by the user by dragging and dropping any column header into the drop element
-
 	When I have dragged and dropped a column tab
 	Then the employee page should be sorted successfully

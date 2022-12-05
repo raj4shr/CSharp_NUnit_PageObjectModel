@@ -13,35 +13,35 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions.TimeAndMaterial
         public void WhenINavigateToTheTimeAndMaterialPage()
         {
             Login_Test_Automation_TurnUp.Pages.TimeAndMaterial TAM = new();
-            TAM.gotoTimeAndMaterial(chromeDriver);
+            TAM.gotoTimeAndMaterial(wd.chromeDriver);
         }
 
         [When(@"I have created a new time and material record")]
         public void WhenIHaveCreatedANewTimeAndMaterialRecord()
         {
             NTAM = new();
-            NTAM.createNewTandM(chromeDriver);
+            NTAM.createNewTandM(wd.chromeDriver);
         }
 
         [When(@"I have deleted an time and material record")]
         public void WhenIHaveDeletedAnTimeAndMaterialRecord()
         {
             DTAM = new();
-            DTAM.deleteTAM(chromeDriver);
+            DTAM.deleteTAM(wd.chromeDriver);
         }
 
         [When(@"I have edited a time and material record")]
         public void WhenIHaveEditedATimeAndMaterialRecord()
         {
             ETAM = new();
-            ETAM.editTimeAndMaterial(chromeDriver);
+            ETAM.editTimeAndMaterial(wd.chromeDriver);
         }
 
         [When(@"I have dragged and dropped a column tab in time and material page")]
         public void WhenIHaveDraggedAndDroppedAColumnTabInTimeAndMaterialPage()
         {
             TMDAD = new();
-            TMDAD.dragAnddrop(chromeDriver);
+            TMDAD.dragAnddrop(wd.chromeDriver);
             //throw new PendingStepException();
         }
     }

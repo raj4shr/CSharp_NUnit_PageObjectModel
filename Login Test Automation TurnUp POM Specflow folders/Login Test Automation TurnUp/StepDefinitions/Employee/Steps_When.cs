@@ -9,14 +9,14 @@ using WebDriver = Login_Test_Automation_TurnUp.SetupCommonClassFolder.WebDriver;
 
 namespace Login_Test_Automation_TurnUp.StepDefinitions.Employee
 {
-    public partial class Employee_StepDefinitions
+    public partial class Employee_StepDefinitions : WebDriver
     {
         
         [When(@"I have deleted an employee record")]
         public void WhenIHaveDeletedAnEmployeeRecord()
         {
             employeeDelete = new();
-            employeeDelete.DeleteEmployee(chromeDriver);
+            employeeDelete.DeleteEmployee(wd.chromeDriver);
 
         }
 
@@ -24,15 +24,15 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions.Employee
         public void WhenINavigateToTheEmployeesPage()
         {
             EmployeesPage employee = new();
-            employee.gotoEmployeePage(chromeDriver);
-            _outputHelper.WriteLine("Specflow BDD to navigating to the employees page");
+            employee.gotoEmployeePage(wd.chromeDriver);
+            //_outputHelper.WriteLine("Specflow BDD to navigating to the employees page");
         }
 
         [When(@"I have created a new employee record")]
         public void WhenIHaveCreatedANewEmployeeRecord()
         {
             newEmployee = new();
-            newEmployee.CreateNewEmployee(chromeDriver);
+            newEmployee.CreateNewEmployee(wd.chromeDriver);
         }
 
         
@@ -40,7 +40,7 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions.Employee
         public void WhenIHaveDraggedAndDroppedAColumnTab()
         {
             employeeDAD = new();
-            employeeDAD.dragAnddropEmployee(chromeDriver);
+            employeeDAD.dragAnddropEmployee(wd.chromeDriver);
         }
 
         
@@ -49,7 +49,7 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions.Employee
         public void WhenIHaveEditedAEmployeeRecordWithRespective(string userName, string row)
         {
             editEmployee = new();
-            editEmployee.editEmployee(chromeDriver, userName, int.Parse(row));
+            editEmployee.editEmployee(wd.chromeDriver, userName, int.Parse(row));
         }
     }
 }
