@@ -1,24 +1,25 @@
 using WebDriver = Login_Test_Automation_TurnUp.SetupCommonClassFolder.WebDriver;
-
+[assembly: Parallelizable(ParallelScope.Fixtures)]
 namespace Login_Test_Automation_TurnUp.StepDefinitions.Employee
 {
     [Binding]
     public class CreateANewEmployeeStepDefinitions : WebDriver
     {
         CreateNewEmployeePage? newEmployee;
-        ISpecFlowOutputHelper? _outputHelper;
+        ScenarioContext? _scenarioContext;
+        WebDriver? wd;
 
         //Specflow output helper injection
-        public CreateANewEmployeeStepDefinitions(ISpecFlowOutputHelper outputHelper)
+        public CreateANewEmployeeStepDefinitions(ScenarioContext? scenarioContext)
         {
-            _outputHelper = outputHelper;
+            _scenarioContext = scenarioContext;
         }
 
         [Given(@"I logged into turnup portal successfully")]
         public void GivenILoggedIntoEmployeePortalSuccessfully()
         {
-            _outputHelper.WriteLine("Specflow BDD for logging in to IC portal");
-            WebDriver wd = new();
+            wd = new();
+            _scenarioContext.Add("driver", wd);
             wd.login();
         }
 
@@ -26,22 +27,22 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions.Employee
         public void WhenINavigateToTheEmployeesPage()
         {
             EmployeesPage employee = new();
-            employee.gotoEmployeePage(chromeDriver);
-            _outputHelper.WriteLine("Specflow BDD to navigating to the employees page");
+            employee.gotoEmployeePage(wd.chromeDriver);
+            
         }
 
         [When(@"I have created a new employee record")]
         public void WhenIHaveCreatedANewEmployeeRecord()
         {
             newEmployee = new();
-            newEmployee.CreateNewEmployee(chromeDriver);
+            newEmployee.CreateNewEmployee(wd.chromeDriver);
         }
 
         [Then(@"A new employee should be created sucessfully")]
         public void ThenANewEmployeeShouldBeCreatedSucessfully()
         {
-            newEmployee.CheckCreatedEmployee(chromeDriver);
-            chromeDriver.Quit();
+            newEmployee.CheckCreatedEmployee(wd.chromeDriver);
+            wd.chromeDriver.Quit();
         }
     }
 }

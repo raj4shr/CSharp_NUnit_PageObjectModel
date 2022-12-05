@@ -15,6 +15,8 @@ namespace Login_Test_Automation_TurnUp;
 
 public class turnUpPortalBaseClass : findByLocator
 {
+    public IWebDriver? chromeDriver { get; set; }
+    
     private string[] firstName = new string[]
     {
         "Harry","Ross",

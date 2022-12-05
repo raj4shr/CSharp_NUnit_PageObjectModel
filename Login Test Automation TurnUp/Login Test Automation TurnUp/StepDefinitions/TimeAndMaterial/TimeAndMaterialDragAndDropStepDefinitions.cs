@@ -6,20 +6,27 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions.TimeAndMaterial
     public class TimeAndMaterialDragAndDropStepDefinitions : WebDriver
     {
         DragAndDrop TMDAD;
+        WebDriver? wd;
+
+        public TimeAndMaterialDragAndDropStepDefinitions(ScenarioContext scenarioContext)
+        {
+            wd = (WebDriver)scenarioContext["driver"];
+        }
+
         [When(@"I have dragged and dropped a column tab in time and material page")]
         public void WhenIHaveDraggedAndDroppedAColumnTabInTimeAndMaterialPage()
         {
             TMDAD = new();
-            TMDAD.dragAnddrop(chromeDriver);
+            TMDAD.dragAnddrop(wd.chromeDriver);
             //throw new PendingStepException();
         }
 
         [Then(@"The time and material page should be sorted successfully")]
         public void ThenTheTimeAndMaterialPageShouldBeSortedSuccessfully()
         {
-            TMDAD.dragAnddropCloseBDD(chromeDriver);
+            TMDAD.dragAnddropCloseBDD(wd.chromeDriver);
             Console.WriteLine("Time and material drag and drop tab closed successfully.....");
-            chromeDriver.Quit();
+            wd.chromeDriver.Quit();
             //throw new PendingStepException();
         }
 

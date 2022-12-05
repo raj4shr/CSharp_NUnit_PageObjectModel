@@ -3,13 +3,14 @@
 As a user, I should be able to create, edit and delete time and material 
 
 Background: 
-	Given I logged into turnup portal successfully
+	Given I logged into turnup portal TAM successfully
 	When I navigate to the time and material page
 
 
 Scenario: Create a new time and material
 	When I have created a new time and material record
 	Then A new time and material should be created sucessfully
+
 
 Scenario: Edit time and material
 	When I have edited a time and material record
@@ -18,6 +19,7 @@ Scenario: Edit time and material
 Scenario: Delete time and material
 	When I have deleted an time and material record
 	Then Time and material record should be deleted successfully
+
 
 Scenario: Drag and drop
 	When I have dragged and dropped a column tab in time and material page

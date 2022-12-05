@@ -1,18 +1,36 @@
+using TechTalk.SpecFlow;
 using WebDriver = Login_Test_Automation_TurnUp.SetupCommonClassFolder.WebDriver;
 
 
 namespace Login_Test_Automation_TurnUp.StepDefinitions.TimeAndMaterial
 {
+    
     [Binding]
     public class CreateNewTimeandMaterialStepDefinitions : WebDriver
     {
         NewTimeAndMaterial? NTAM;
+        WebDriver? wd;
+        ScenarioContext? _scenarioContext;
+
+        public CreateNewTimeandMaterialStepDefinitions(ScenarioContext scenarioContext )
+        {
+            _scenarioContext = scenarioContext;
+        }
+
+        [Given(@"I logged into turnup portal TAM successfully")]
+        public void GivenILoggedIntoTurnupPortalTAMSuccessfully()
+        {
+           
+            wd = new();
+           _scenarioContext.Add("driver",wd);
+            wd.login();
+        }
 
         [When(@"I navigate to the time and material page")]
         public void WhenINavigateToTheTimeAndMaterialPage()
         { 
             Login_Test_Automation_TurnUp.Pages.TimeAndMaterial TAM = new();
-            TAM.gotoTimeAndMaterial(chromeDriver);
+            TAM.gotoTimeAndMaterial(wd.chromeDriver);
         }
 
 
@@ -21,14 +39,14 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions.TimeAndMaterial
         public void WhenIHaveCreatedANewTimeAndMaterialRecord()
         {
             NTAM = new();
-            NTAM.createNewTandM(chromeDriver);
+            NTAM.createNewTandM(wd.chromeDriver);
         }
 
         [Then(@"A new time and material should be created sucessfully")]
         public void ThenANewTimeAndMaterialShouldBeCreatedSucessfully()
         {
-            NTAM.checkNewTimeAndMaterialCreated(chromeDriver);
-            chromeDriver.Quit();
+            NTAM.checkNewTimeAndMaterialCreated(wd.chromeDriver);
+            wd.chromeDriver.Quit();
         }
 
 

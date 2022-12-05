@@ -6,18 +6,24 @@ namespace Login_Test_Automation_TurnUp.StepDefinitions.TimeAndMaterial
     public class EditTimeAndMaterialStepDefinitions : WebDriver
     {
         EditTandM? ETAM;
+        WebDriver? wd;
+        public EditTimeAndMaterialStepDefinitions(ScenarioContext scenarioContext)
+        {
+            wd = (WebDriver)scenarioContext["driver"];
+        }
+
         [When(@"I have edited a time and material record")]
         public void WhenIHaveEditedATimeAndMaterialRecord()
         {
             ETAM = new();
-            ETAM.editTimeAndMaterial(chromeDriver);
+            ETAM.editTimeAndMaterial(wd.chromeDriver);
         }
 
         [Then(@"time and material record should be edited successfully")]
         public void ThenTimeAndMaterialRecordShouldBeEditedSuccessfully()
         {
-            ETAM.checkEditTimeAndMaterial(chromeDriver);
-            chromeDriver.Quit();
+            ETAM.checkEditTimeAndMaterial(wd.chromeDriver);
+            wd.chromeDriver.Quit();
         }
 
 
